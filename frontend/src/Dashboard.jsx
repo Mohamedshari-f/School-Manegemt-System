@@ -14,10 +14,10 @@ function Dashboard() {
           <span className="font-semibold text-lg">Students</span>
         </li></Link>
 
-        <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+       <Link to="/Teachers"><li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-user-plus text-xl"></i>
           <span className="font-semibold text-lg">Teacher</span>
-        </li>
+        </li></Link> 
 
         <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-regular fa-money-bill-1 text-xl"></i>

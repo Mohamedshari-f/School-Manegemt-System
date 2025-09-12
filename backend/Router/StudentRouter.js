@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const  StudentControl= require("../controller.js/StudentControl");
+const  StudentControl= require("../controller/StudentControl");
 router.post("/create/student", StudentControl.CreateStudent);
 router.get("/read/student", StudentControl.ReadStudent);
 router.get("/read/student/:id", StudentControl.ReadSingleStudent);

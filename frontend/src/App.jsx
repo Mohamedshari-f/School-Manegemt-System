@@ -3,6 +3,9 @@ import Add from "./student/AddS";
 import DisplayS from "./student/DisplayS";
 import Dashboard from "./Dashboard";
 import UpdateStudent from "./student/update";
+import DisplayT from "./Teacher/Display";
+import AddT from "./Teacher/AddT";
+import UpdateTeacher from "./Teacher/UpdateTeacher";
 
 function App() {
   return <>
@@ -12,8 +15,10 @@ function App() {
       <Route path="/Student" element={<DisplayS />} />
       <Route path="/update/student/:id" element={<UpdateStudent />} />
       <Route path="/addstudent" element={<Add />} />
+      <Route path="/Teachers" element={<DisplayT />} />
+      <Route path="/addteacher" element={<AddT />} />
+<Route path="/update/Teacher/:id" element={<UpdateTeacher />} />
 
-      
     </Routes>
   </>
 }
