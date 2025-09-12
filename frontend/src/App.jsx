@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import UpdateStudent from "./student/update";
 import Add from "./student/AddS";
 import DisplayS from "./student/DisplayS";
 import Dashboard from "./Dashboard";
+import UpdateStudent from "./student/update";
 
 function App() {
   return <>

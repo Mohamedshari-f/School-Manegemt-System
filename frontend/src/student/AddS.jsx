@@ -20,7 +20,7 @@ function Add() {
             "Class":Class
         }).then(()=>{
             alert("successed")
-            navigate("/DisplayS")
+            navigate("/Student")
         }) 
     }
   return (
