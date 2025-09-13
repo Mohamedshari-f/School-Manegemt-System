@@ -7,7 +7,7 @@ function UpdateTeacher() {
     const [Name,setName]=useState("")
     const [Qualification,setQualification]=useState("")
     const [Gender,setGender]=useState("")
-    const [Joining,setJoining]=useState("")
+    const [Joining, setJoining]=useState("")
     const [Phone,setPhone]=useState("")
     const [Class,setClass]=useState("")
     const [Course,setCourse]=useState("")
@@ -18,7 +18,8 @@ function UpdateTeacher() {
     axios.get(`http://localhost:6200/read/Teacher/${params.id}`).then((res)=>{
         setName(res.data[0].Name),
         setQualification(res.data[0].Qualification),
-        setJoining(res.data[0].joining),
+        setJoining(res.data[0].Joining),
+        setGender(res.data[0].Gender)
         setPhone(res.data[0].Phone),
         setClass(res.data[0].Class),
         setCourse(res.data[0].Course)

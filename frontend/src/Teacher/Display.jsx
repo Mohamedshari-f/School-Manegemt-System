@@ -43,7 +43,7 @@ function DisplayT(){
             <tr class="hover:bg-blue-50">
               <td class="px-4 py-3">{item.Name}</td>
               <td class="px-4 py-3">{item.Qualification}</td>
-              <td class="px-4 py-3">{item.joining}</td>
+              <td class="px-4 py-3">{item.Joining}</td>
               <td class="px-4 py-3">{item.Gender}</td>
               <td class="px-4 py-3">{item.Phone}</td>
               <td class="px-4 py-3">{item.Class}</td>
