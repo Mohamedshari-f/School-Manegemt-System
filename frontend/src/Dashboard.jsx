@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Dashboard() {
   return (
@@ -24,10 +24,11 @@ function Dashboard() {
           <span className="font-semibold text-lg">Fees</span>
         </li>
 
-        <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+       <NavLink to="/Assingment"><li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-book text-xl"></i>
-          <span className="font-semibold text-lg">Exams</span>
+          <span className="font-semibold text-lg">Assignment</span>
         </li>
+        </NavLink> 
 
         <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-book text-xl"></i>

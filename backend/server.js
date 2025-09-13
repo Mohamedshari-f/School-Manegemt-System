@@ -1,8 +1,10 @@
 const express = require("express")
-const StudentModel=require("./Models/StudentModel")
+// const StudentModel=require("./Models/StudentModel")
+// const Assignment=require("./Models/Assignment")
 const cors=require("cors")
 const StudentRouter=require("./Router/StudentRouter")
 const TeacherRouter=require("./Router/TeacherRouter")
+const AssignmentRouter=require("./Router/AssignmentRouter")
 const mongoose=require("mongoose")
 
 const app=express()
@@ -13,4 +15,8 @@ app.use(cors())
 
 app.use(StudentRouter)
 app.use(TeacherRouter)
+app.use(AssignmentRouter)
+
+app.use("/allImages", express.static("images"))
+
 app.listen(6200, () => console.log("✅ Server running on port 6200"));
