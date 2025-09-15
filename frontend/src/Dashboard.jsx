@@ -19,10 +19,10 @@ function Dashboard() {
           <span className="font-semibold text-lg">Teacher</span>
         </li></Link> 
 
-        <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+       <Link to="/Fees"><li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-regular fa-money-bill-1 text-xl"></i>
           <span className="font-semibold text-lg">Fees</span>
-        </li>
+        </li></Link> 
 
        <NavLink to="/Assingment"><li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-book text-xl"></i>
@@ -35,10 +35,10 @@ function Dashboard() {
           <span className="font-semibold text-lg">Subjects</span>
         </li>
 
-        <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+        <Link to="/Attendance"><li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-user text-xl"></i>
           <span className="font-semibold text-lg">Attendance</span>
-        </li>
+        </li></Link>
 
         <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-gear text-xl"></i>

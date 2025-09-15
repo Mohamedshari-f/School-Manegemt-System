@@ -5,6 +5,7 @@ const cors=require("cors")
 const StudentRouter=require("./Router/StudentRouter")
 const TeacherRouter=require("./Router/TeacherRouter")
 const AssignmentRouter=require("./Router/AssignmentRouter")
+const AttendanceRouter=require("./Router/attendanceRouter")
 const mongoose=require("mongoose")
 
 const app=express()
@@ -16,6 +17,7 @@ app.use(cors())
 app.use(StudentRouter)
 app.use(TeacherRouter)
 app.use(AssignmentRouter)
+app.use(AttendanceRouter)
 
 app.use("/allImages", express.static("images"))
 
