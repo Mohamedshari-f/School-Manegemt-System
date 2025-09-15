@@ -1,49 +1,48 @@
-const StudentModel=require("../Models/Fee")
+const FeeModel = require("../Models/Fee");
+const StudentModel = require("../Models/StudentModel");
 
-// post
-const CreateFee=async(req,res)=>{
-    const newData=FeeModel(req.body)
-    const SaveData=await newData.save()
-    if(SaveData){
-        res.send(SaveData)
-    }
-}
-// Read 
+// Create Fee
+const CreateFee = async (req, res) => {
+  try {
+    const { studentId, amount, month, paidDate } = req.body;
+    const newFee = new FeeModel({ student: studentId, amount, month, paidDate });
+    await newFee.save();
+    res.send(newFee);
+  } catch (err) {
+    res.status(400).send({ message: err.message });
+  }
+};
 
-const ReadFee=async (req,res)=>{
-    const getData=await FeeModel.find()
-    if(getData){
-        res.send(getData)
-    }
-}
+// Read All Fees
+const ReadFees = async (req, res) => {
+  try {
+    const data = await FeeModel.find().populate("student");
+    res.send(data);
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
 
-// read single data
-const ReadSingleFee=async (req,res)=>{
-    const getData=await FeeModel.find( {_id: req.params.id})
-    if(getData){
-        res.send(getData)
-    }
-}
+// Update Fee
+const UpdateFee = async (req, res) => {
+  try {
+    const updated = await FeeModel.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.send(updated);
+  } catch (err) {
+    res.status(400).send({ message: err.message });
+  }
+};
 
+// Delete Fee
+const DeleteFee = async (req, res) => {
+  try {
+    await FeeModel.findByIdAndDelete(req.params.id);
+    res.send({ message: "Fee deleted successfully" });
+  } catch (err) {
+    res.status(400).send({ message: err.message });
+  }
+};
 
-
-const UpdateFee=async (req,res)=>{
-    const updateData=await FeeModel.updateOne(
-        {_id: req.params.id},
-        {$set: req.body}
-    )
-    if(updateData){
-        res.send("Succes Update")
-    }
-}
-
-// delete
-
-const DeleteFee=async (req,res)=>{
-    const removeDate= await FeeModel.deleteOne({_id: req.params.id})
-
-    if(removeDate){
-        res.send("Succes Deleted")
-    }
-}
-module.exports={CreateFee,ReadFee,ReadSingleFee,UpdateFee,DeleteFee }
+module.exports = { CreateFee, ReadFees, UpdateFee, DeleteFee };

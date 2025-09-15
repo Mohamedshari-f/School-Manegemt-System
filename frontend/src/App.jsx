@@ -9,10 +9,13 @@ import UpdateTeacher from "./Teacher/UpdateTeacher";
 import Assingment from "./classAssignment/Assignment";
 import AddAssignment from "./classAssignment/AddAssignment";
 import Update from "./classAssignment/uppdateAssi";
-import DisplayFee from "./Fee/DisplayF";
-import AddFee from "./Fee/AddF";
-import InvoiceCard from "./Fee/CArds";
 import DisplayAttendance from "./Attendance/attendance";
+import Fee from "./Fee/AddF";
+// import StudentLogin from "./ExamAdmin/StudentLogin";
+import ExamAdmin from "./ExamAdmin/Exam Admin";
+import StudentRegister from "./PaasStudent/Register";
+import StudentLogin from "./PaasStudent/StudentLogin";
+// import StudentLogin from "./ExamAdmin/StudentLogin";
 
 function App() {
   return <>
@@ -26,11 +29,14 @@ function App() {
       <Route path="/addteacher" element={<AddT />} />
       <Route path="/Assingment" element={<Assingment/>} />
       <Route path="/AddAssignment" element={<AddAssignment/>} />
+      <Route path="/Fee" element={<Fee/>} />
+      <Route path="/StudentLogin" element={<StudentLogin/>} />
       <Route path="/Update/:id" element={<Update/>} />
+      <Route path="/ExamAdmin" element={<ExamAdmin/>} />
+      <Route path="/StudentLogin" element={<StudentLogin/>} />
+      <Route path="/StudentRegister" element={<StudentRegister/>} />
 
 <Route path="/update/Teacher/:id" element={<UpdateTeacher />} />
-<Route path="/Fees" element={<DisplayFee />} />
-<Route path="/addfee" element={<AddFee />} />
 <Route path="/Attendance" element={<DisplayAttendance />} />
 
     </Routes>

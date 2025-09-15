@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
 
 const FeeSchema = new mongoose.Schema({
-  StudentName: { type: String, required: true },
-  StudentID: { type: String, required: true },
-  Class: { type: String, required: true },
-    Month: { type: String, required: true },
-    Amount: { type: Number, required: true },
-    PaidDate: { type: String, required: true },
+  student: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Student",
+    required: true,
+  },
+  amount: { type: Number, required: true },
+  month: { type: String, required: true }, // e.g. "September"
+  paidDate: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Fee", FeeSchema);
