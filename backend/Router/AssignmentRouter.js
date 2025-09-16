@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const AssignmentController = require("../controller/Assignment")
-const uploadImage = require("../middleware/uploadImage")
+const uploadImage = require("../malware/uploadImage")
 
 router.post("/create/Assignment", uploadImage.single("prImage"), AssignmentController.createAssignment)
 

@@ -11,7 +11,7 @@ const mongoose=require("mongoose")
 const StdRouter = require("./Router/StdRouter")     // Registration route
 const feeRouter = require("./Router/Fee")
 const ExamRouter = require("./Router/ExamRouter")
-const authRoutes = require("./middleware/auth")
+const authRoutes = require("./Router/auth")
 
 
 const app=express()

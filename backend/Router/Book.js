@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const BookController = require("../controller/BookController");
-const upload = require("../middleware/uploadImage")
+const upload = require("../malware/uploadImage")
 
 // Add Book
 router.post("/create/book", upload.single("img"), BookController.CreateBook);
