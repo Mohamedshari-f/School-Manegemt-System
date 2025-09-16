@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-function Add() {
+function Adds() {
     const [Name,setName]=useState("")
     const [GuardianName,setGuardianName]=useState("")
     const [Gender,setGender]=useState("")
@@ -42,4 +42,4 @@ function Add() {
     </form>
   )
 }
-export default Add
+export default Adds

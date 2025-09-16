@@ -1,29 +1,37 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcrypt');
-const Student = require('../Models/Ali');
+// const express = require("express");
+// const router = express.Router();
+// const bcrypt = require("bcrypt");
+// const Student = require("../Models/StudentModel");
 
-router.post('/register/create', async (req, res) => {
-  try {
-    const { name, password, className } = req.body;
+// // POST /register/create
+// router.post("/create", async (req, res) => {
+//   try {
+//     const { name, email, password, Class } = req.body;
 
-    const exists = await Student.findOne({ Name: name });
-    if (exists) return res.status(400).json({ message: 'Student already exists' });
+//     // check required fields manually
+//     if (!name || !email || !password || !Class) {
+//       return res.status(400).json({ message: "All fields are required" });
+//     }
 
-    const hashed = await bcrypt.hash(password, 10);
+//     // hash password
+//     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newStudent = new Student({
-      Name: name,
-      Password: hashed,
-      Class: className,
-    });
+//     // create new student
+//     const student = await Student.create({
+//       name,
+//       email,
+//       password: hashedPassword,
+//       Class
+//     });
 
-    const saved = await newStudent.save();
-    res.status(201).json(saved);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
+//     res.status(201).json({
+//       message: "Student registered successfully",
+//       student
+//     });
+//   } catch (err) {
+//     console.error("Register Error:", err);
+//     res.status(500).json({ message: err.message });
+//   }
+// });
 
-module.exports = router;
+// module.exports = router;

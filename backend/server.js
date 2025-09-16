@@ -4,15 +4,14 @@ const mongoose = require("mongoose");
 
 // Routers
 const StudentRouter = require("./Router/StudentRouter");
-const StdRouter = require("./Router/StdRouter");      // Registration route
+// const StdRouter = require("./Router/StdRouter");      // Registration route
 const TeacherRouter = require("./Router/TeacherRouter");
 const AssignmentRouter = require("./Router/AssignmentRouter");
 const AttendanceRouter = require("./Router/attendanceRouter");
 const feeRouter = require("./Router/Fee");
 const ExamRouter = require("./Router/ExamRouter");
-
-// Auth routes
-const authRoutes = require("./middleware/auth");
+// const authRoutes = require("./Router/AuthRouter");    // ✅ saxay
+// const RegisterRoutes = require("./Router/Register");    // ✅ saxay
 
 const app = express();
 
@@ -26,20 +25,21 @@ app.use(cors());
 app.use(express.json());
 
 // Mount routers
-app.use("/student", StudentRouter);
-app.use("/teacher", TeacherRouter);
-app.use("/assignment", AssignmentRouter);
-app.use("/attendance", AttendanceRouter);
-app.use("/fee", feeRouter);
-app.use("/exam", ExamRouter);
+app.use(StudentRouter);
+app.use(TeacherRouter);
+app.use(AssignmentRouter);
+app.use(AttendanceRouter);
+app.use(feeRouter);
+app.use(ExamRouter);
+// app.use(RegisterRoutes);
 
 // StdRouter (registration route)
-app.use("/", StdRouter); // POST /register/create
+// app.use("/", StdRouter); // POST /register/create
 
-// Auth routes
-app.use("/auth", authRoutes);
+// Auth routes (student login)
+// app.use("/auth", authRoutes);
 
-// Static folder
+// Static folder for images
 app.use("/allImages", express.static("images"));
 
 // Start server
