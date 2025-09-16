@@ -1,42 +1,43 @@
-import axios from "axios"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { toast, ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [active, setActive] = useState("students") // default = student
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [active, setActive] = useState("students"); // default = students
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function handleInsert(e) {
-    e.preventDefault()
+    e.preventDefault();
+
     const url =
       active === "students"
         ? "http://localhost:6200/login/students"
-        : "http://localhost:6200/login/admin"
-    const payload = { email: email, password: password }
+        : "http://localhost:6200/login/admin";
+
+    const payload = { email, password };
 
     axios
       .post(url, payload)
       .then((res) => {
-        toast.success(`${active} login successfully`)
-        setTimeout(
-          () => navigate(active === "students" ? "/" : "/ExamAdmin"),
-          1500
-        )
-        localStorage.setItem(
-          active === "students" ? "students" : "admin",
-          JSON.stringify(res.data)
-        )
-      })
-      .catch((error) => {
-        if (error) {
-          toast.error("Invalid email or password")
+        toast.success(`${active} login successfully`);
+
+        // Save to localStorage and navigate
+        if (active === "students") {
+          localStorage.setItem("students", JSON.stringify(res.data));
+          setTimeout(() => navigate("/ExamAdmin"), 1500); // students dashboard
+        } else {
+          localStorage.setItem("admin", JSON.stringify(res.data));
+          setTimeout(() => navigate("/dash"), 1500); // admin dashboard
         }
       })
+      .catch((err) => {
+        toast.error(err.response?.data?.error || "Invalid email or password");
+      });
   }
 
   return (
@@ -64,6 +65,7 @@ function Login() {
             Admin
           </button>
         </div>
+
         <h2 className="text-2xl font-semibold tracking-tight mb-1">Login</h2>
 
         <form className="space-y-4" onSubmit={handleInsert}>
@@ -110,7 +112,7 @@ function Login() {
       </div>
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
