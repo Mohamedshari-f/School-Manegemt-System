@@ -46,7 +46,7 @@ function DisplayBooks() {
 
           <Link to="/AddBook">
             <button className="bg-orange-500 hover:bg-orange-600 px-5 py-2 rounded-lg text-white font-semibold">
-              ➕ Add New Book
+              ➕ Add New Course
             </button>
           </Link>
           </div>

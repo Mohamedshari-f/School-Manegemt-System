@@ -19,21 +19,15 @@ function Login() {
         ? "http://localhost:6200/login/students"
         : "http://localhost:6200/login/admin";
 
-    const payload = { email, password };
+    const payload = active === "students" ? { email, password } :  { email, password }
 
-    axios
-      .post(url, payload)
+    axios.post(url, payload)
       .then((res) => {
         toast.success(`${active} login successfully`);
 
         // Save to localStorage and navigate
-        if (active === "students") {
-          localStorage.setItem("students", JSON.stringify(res.data));
-          setTimeout(() => navigate("/ExamAdmin"), 1500); // students dashboard
-        } else {
-          localStorage.setItem("admin", JSON.stringify(res.data));
-          setTimeout(() => navigate("/dash"), 1500); // admin dashboard
-        }
+        setTimeout(()=>navigate(active==="customer"?"/":"/Reports"),1500)
+         localStorage.setItem(active==="students"? "student":"admin",JSON.stringify(res))
       })
       .catch((err) => {
         toast.error(err.response?.data?.error || "Invalid email or password");

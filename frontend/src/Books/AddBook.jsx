@@ -31,10 +31,10 @@ function AddBook() {
         onSubmit={handlePost}
         className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Add New Book</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Add New Course</h2>
 
         <div className="mb-4">
-          <label className="block mb-2 font-medium">Book Name</label>
+          <label className="block mb-2 font-medium">Course Name</label>
           <input
             type="text"
             value={bookName}
@@ -58,7 +58,7 @@ function AddBook() {
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
         >
-          Add Book
+          Add Course
         </button>
       </form>
     </div>
