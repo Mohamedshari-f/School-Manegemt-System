@@ -37,7 +37,27 @@ function Dashboard() {
           </li>
         </NavLink>
 
+<<<<<<< HEAD
       <Link to="/"> <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+=======
+
+       <Link to="/Courses"> <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+          <i className="fa-solid fa-book text-xl"></i>
+          <span className="font-semibold text-lg">Courses</span>
+        </li></Link>
+
+        <Link to="/Attendance"><li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+          <i className="fa-solid fa-user text-xl"></i>
+          <span className="font-semibold text-lg">Attendance</span>
+        </li></Link>
+
+      <Link to="/Exam"><li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+          <i className="fa-solid fa-gear text-xl"></i>
+          <span className="font-semibold text-lg">Exam</span>
+        </li> </Link>
+
+      <Link to="/StudentRegister"> <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+>>>>>>> b1a32cb833645c9b92733a1f593b482726830b0e
           <i className="fa-solid fa-book text-xl"></i>
           <span className="font-semibold text-lg">Subjects</span>
         </li></Link> 
@@ -49,24 +69,14 @@ function Dashboard() {
           </li>
         </Link>
 
-        <Link to="/StudentLogin">
-          <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
-            <i className="fa-solid fa-gear text-xl"></i>
-            <span className="font-semibold text-lg">Exam</span>
-          </li>
-        </Link>
+       
  <Link to="/ExamAdmin">
         <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-right-from-bracket text-xl"></i>
           <span className="font-semibold text-lg">Logout</span>
         </li></Link>
 
-        <NavLink to="/ExamAdmin">
-          <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
-            <i className="fa-solid fa-right-from-bracket text-xl"></i>
-            <span className="font-semibold text-lg">Exam Admin</span>
-          </li>
-        </NavLink>
+        
       </ul>
     </div>
   );

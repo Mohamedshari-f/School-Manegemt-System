@@ -10,6 +10,8 @@ import Assingment from "./classAssignment/Assignment";
 import AddAssignment from "./classAssignment/AddAssignment";
 import Update from "./classAssignment/uppdateAssi";
 import DisplayAttendance from "./Attendance/attendance";
+import DisplayBooks from "./Books/Book";
+
 import Fee from "./Fee/AddF";
 import Adds from "./student/AddS";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
@@ -39,6 +41,7 @@ function App() {
 
 <Route path="/update/Teacher/:id" element={<UpdateTeacher />} />
 <Route path="/Attendance" element={<DisplayAttendance />} />
+<Route path="/Courses" element={<DisplayBooks />} />
 
     </Routes>
   </>
