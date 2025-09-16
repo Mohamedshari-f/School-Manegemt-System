@@ -17,6 +17,7 @@ import Adds from "./student/AddS";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
 import ExamAdmin from "./ExamAdmin/Exam Admin";
 import Assignment from "./classAssignment/Assignment";
+import MainPage from "./Security/Login&register";
 // import StudentRegister from "./PaasStudent/Register";
 // import StudentLogin from "./PaasStudent/StudentLogin";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
@@ -24,7 +25,9 @@ import Assignment from "./classAssignment/Assignment";
 function App() {
   return <>
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<MainPage />} />
+
+      <Route path="/Dash" element={<Dashboard />} />
 
       <Route path="/Student" element={<DisplayS />} />
       <Route path="/update/student/:id" element={<UpdateStudent />} />
