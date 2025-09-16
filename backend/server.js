@@ -11,6 +11,7 @@ const BookRouter = require("./Router/Book");
 // const StdRouter = require("./Router/StdRouter");     // Registration route
 const feeRouter = require("./Router/Fee");
 const ExamRouter = require("./Router/ExamRouter");
+const AdminRouter = require("./Router/AdminRouter");
 // const authRoutes = require("./Router/auth");
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(AttendanceRouter);
 app.use(BookRouter);
 app.use(feeRouter);
 app.use(ExamRouter);
+app.use(AdminRouter);
 
 
 // Static folders
