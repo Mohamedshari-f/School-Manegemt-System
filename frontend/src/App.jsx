@@ -13,6 +13,7 @@ import DisplayFee from "./Fee/DisplayF";
 import AddFee from "./Fee/AddF";
 import InvoiceCard from "./Fee/CArds";
 import DisplayAttendance from "./Attendance/attendance";
+import DisplayBooks from "./Books/Book";
 
 function App() {
   return <>
@@ -32,6 +33,7 @@ function App() {
 <Route path="/Fees" element={<DisplayFee />} />
 <Route path="/addfee" element={<AddFee />} />
 <Route path="/Attendance" element={<DisplayAttendance />} />
+<Route path="/Courses" element={<DisplayBooks />} />
 
     </Routes>
   </>

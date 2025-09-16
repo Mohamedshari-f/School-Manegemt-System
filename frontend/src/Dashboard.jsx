@@ -30,20 +30,20 @@ function Dashboard() {
         </li>
         </NavLink> 
 
-        <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+       <Link to="/Courses"> <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-book text-xl"></i>
-          <span className="font-semibold text-lg">Subjects</span>
-        </li>
+          <span className="font-semibold text-lg">Courses</span>
+        </li></Link>
 
         <Link to="/Attendance"><li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-user text-xl"></i>
           <span className="font-semibold text-lg">Attendance</span>
         </li></Link>
 
-        <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+      <Link to="/Exam"><li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-gear text-xl"></i>
-          <span className="font-semibold text-lg">Profile</span>
-        </li>
+          <span className="font-semibold text-lg">Exam</span>
+        </li> </Link>
 
         <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-right-from-bracket text-xl"></i>
