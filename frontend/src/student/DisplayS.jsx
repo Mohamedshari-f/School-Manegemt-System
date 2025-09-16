@@ -8,8 +8,7 @@ function DisplayS() {
   const [data, setData] = useState([]);
 
   const handlePost = () => {
-    axios
-      .get("http://localhost:6200/read/student")
+    axios.get("http://localhost:6200/read/student")
       .then((res) => setData(res.data))
       .catch((err) => console.error(err));
   };

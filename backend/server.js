@@ -2,17 +2,16 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-// Routers
 const StudentRouter = require("./Router/StudentRouter");
 const TeacherRouter = require("./Router/TeacherRouter");
 const AssignmentRouter = require("./Router/AssignmentRouter");
 const AttendanceRouter = require("./Router/attendanceRouter");
 const BookRouter = require("./Router/Book");
-// const StdRouter = require("./Router/StdRouter");     // Registration route
 const feeRouter = require("./Router/Fee");
 const ExamRouter = require("./Router/ExamRouter");
 const AdminRouter = require("./Router/AdminRouter");
-// const authRoutes = require("./Router/auth");
+
+const StudentAuthoRouter = require("./Router/StudentAuthoRouter"); // ✅ typo saxay
 
 const app = express();
 
@@ -30,6 +29,7 @@ app.use(feeRouter);
 app.use(ExamRouter);
 app.use(AdminRouter);
 
+app.use(StudentAuthoRouter); // ✅ variable sax ah
 
 // Static folders
 app.use("/allImages", express.static("images"));

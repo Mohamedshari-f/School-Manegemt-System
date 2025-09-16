@@ -17,15 +17,19 @@ import Adds from "./student/AddS";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
 import ExamAdmin from "./ExamAdmin/Exam Admin";
 import Assignment from "./classAssignment/Assignment";
+import MainPage from "./Security/Login&register";
+
 import AddBook from "./Books/AddBook";
-// import StudentRegister from "./PaasStudent/Register";
-// import StudentLogin from "./PaasStudent/StudentLogin";
-// import StudentLogin from "./ExamAdmin/StudentLogin";
+import RegisterStudent from "./Security/Register";
+import Login from "./Security/Login";
+
 
 function App() {
   return <>
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<MainPage />} />
+
+      <Route path="/Dash" element={<Dashboard />} />
 
       <Route path="/Student" element={<DisplayS />} />
       <Route path="/update/student/:id" element={<UpdateStudent />} />
@@ -39,12 +43,12 @@ function App() {
       <Route path="/Update/:id" element={<Update/>} />
       <Route path="/ExamAdmin" element={<ExamAdmin/>} />
       <Route path="/AddBook" element={<AddBook/>} />
-      {/* <Route path="/StudentLogin" element={<StudentLogin/>} /> */}
-      {/* <Route path="/StudentRegister" element={<StudentRegister/>} /> */}
-
+     
 <Route path="/update/Teacher/:id" element={<UpdateTeacher />} />
 <Route path="/Attendance" element={<DisplayAttendance />} />
 <Route path="/Courses" element={<DisplayBooks />} />
+<Route path="/Reg" element={<RegisterStudent />} />
+<Route path="/Login" element={<Login/>} />
 
     </Routes>
   </>
