@@ -29,7 +29,7 @@ function Assignment() {
   <div className="flex ml-64">
 <Dashboard/>
   (
-    <div className="p-8 bg-gray-50 min-h-screen">
+    <div className="p-8 bg-white min-h-screen">
       {/* Header Section */}
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-3xl text-black font-semibold">Assignment List</h2>

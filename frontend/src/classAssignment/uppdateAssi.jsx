@@ -71,7 +71,7 @@ export default function UpdateAssignment() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-white">
       {/* Sidebar */}
       <div className="w-64 h-full overflow-none">
         <Dashboard />

@@ -25,7 +25,7 @@ function DisplayT(){
     }
 
     return (
-      <div className="flex min-h-screen"> 
+      <div className="flex min-h-screen bg-white"> 
         {/* Sidebar */}
         <div className="w-64 bg-gray-800 text-white">
           <Dashboard/>

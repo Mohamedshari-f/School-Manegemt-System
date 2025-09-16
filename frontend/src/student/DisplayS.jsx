@@ -28,7 +28,7 @@ function DisplayS() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-r from-indigo-100 to-blue-200">
+    <div className="flex min-h-screen bg-white">
       {/* Sidebar */}
       <div className="w-64 bg-white shadow-lg">
         <Dashboard />

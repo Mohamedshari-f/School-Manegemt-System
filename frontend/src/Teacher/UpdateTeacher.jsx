@@ -54,7 +54,7 @@ function UpdateTeacher() {
   <div className="flex ml-[500px]">
 <Dashboard/> 
     <form className="flex items-center justify-center min-h-screen bg-white">
-      <div className="bg-orange-500 p-6 rounded-lg w-96">
+      <div className="bg-blue-600 p-6 rounded-lg w-96">
         
         <input value={Name} onChange={(e)=>setName(e.target.value)} type="text" placeholder="enter name" className="w-80 mb-3 px-3 py-2 rounded" />
         <input value={Qualification} onChange={(e)=>setQualification(e.target.value)} type="text" placeholder="enter Qualification" className="w-80 mb-3 px-3 py-2 rounded" />
