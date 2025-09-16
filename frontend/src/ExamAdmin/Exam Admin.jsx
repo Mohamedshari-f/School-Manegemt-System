@@ -3,25 +3,29 @@ import { useState, useEffect } from "react";
 import Dashboard from "../Dashboard";
 
 function ExamAdmin() {
-  const [students, setStudents] = useState([]);
+ const [students, setStudents] = useState([]);
+  const [exams, setExams] = useState([]);
   const [form, setForm] = useState({
     subject: "",
     date: "",
     totalMarks: "",
     studentId: ""
   });
-  const [exams, setExams] = useState([]);
+
+  const loadData = async () => {
+    try {
+      const studentRes = await axios.get("http://localhost:6200/read/student");
+      setStudents(studentRes.data);
+
+      const examRes = await axios.get("http://localhost:6200/read/exam");
+      setExams(examRes.data);
+    } catch (err) {
+      console.error("Error loading data:", err);
+    }
+  };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:6200/read/student")
-      .then((res) => setStudents(res.data))
-      .catch((err) => console.error("Error loading students:", err));
-
-    axios
-      .get("http://localhost:6200/read/exam")
-      .then((res) => setExams(res.data))
-      .catch((err) => console.error("Error loading exams:", err));
+    loadData();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -30,13 +34,12 @@ function ExamAdmin() {
       await axios.post("http://localhost:6200/create/exam", form);
       setForm({ subject: "", date: "", totalMarks: "", studentId: "" });
 
-      const res = await axios.get("http://localhost:6200/exam/read");
-      setExams(res.data);
+      // Dib u refresh garee exams
+      loadData();
     } catch (err) {
       console.error("Error saving exam:", err);
     }
   };
-
   return (
     <div className="flex min-h-screen bg-gradient-to-r from-indigo-100 to-blue-200">
       {/* Left Sidebar */}
@@ -81,7 +84,7 @@ function ExamAdmin() {
           >
             <option value="">Select Student</option>
             {students.map((s) => (
-              <option key={s._id} value={s._id}>
+              <option value={s._id}>
                 {s.Name} - {s.Class}
               </option>
             ))}
@@ -133,4 +136,4 @@ function ExamAdmin() {
   );
 }
 
-export default ExamAdmin;
+export default ExamAdmin

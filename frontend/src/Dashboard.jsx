@@ -37,7 +37,7 @@ function Dashboard() {
           </li>
         </NavLink>
 
-<<<<<<< HEAD
+
        <Link to="/Courses"> <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-book text-xl"></i>
           <span className="font-semibold text-lg">Courses</span>
@@ -52,7 +52,7 @@ function Dashboard() {
           <i className="fa-solid fa-gear text-xl"></i>
           <span className="font-semibold text-lg">Exam</span>
         </li> </Link>
-=======
+
       <Link to="/StudentRegister"> <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
           <i className="fa-solid fa-book text-xl"></i>
           <span className="font-semibold text-lg">Subjects</span>
@@ -64,7 +64,6 @@ function Dashboard() {
             <span className="font-semibold text-lg">Attendance</span>
           </li>
         </Link>
->>>>>>> c0e4b0b1c1b712571c4250f2fefbd9722b18387e
 
         <Link to="/StudentLogin">
           <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">

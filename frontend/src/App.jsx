@@ -10,16 +10,14 @@ import Assingment from "./classAssignment/Assignment";
 import AddAssignment from "./classAssignment/AddAssignment";
 import Update from "./classAssignment/uppdateAssi";
 import DisplayAttendance from "./Attendance/attendance";
-<<<<<<< HEAD
 import DisplayBooks from "./Books/Book";
-=======
+
 import Fee from "./Fee/AddF";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
 import ExamAdmin from "./ExamAdmin/Exam Admin";
 import StudentRegister from "./PaasStudent/Register";
 import StudentLogin from "./PaasStudent/StudentLogin";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
->>>>>>> c0e4b0b1c1b712571c4250f2fefbd9722b18387e
 
 function App() {
   return <>
