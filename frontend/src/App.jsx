@@ -6,7 +6,7 @@ import UpdateStudent from "./student/update";
 import DisplayT from "./Teacher/Display";
 import AddT from "./Teacher/AddT";
 import UpdateTeacher from "./Teacher/UpdateTeacher";
-import Assingment from "./classAssignment/Assignment";
+// import Assingment from "./classAssignment/Assignment";
 import AddAssignment from "./classAssignment/AddAssignment";
 import Update from "./classAssignment/uppdateAssi";
 import DisplayAttendance from "./Attendance/attendance";
@@ -16,6 +16,7 @@ import Fee from "./Fee/AddF";
 import Adds from "./student/AddS";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
 import ExamAdmin from "./ExamAdmin/Exam Admin";
+import Assignment from "./classAssignment/Assignment";
 // import StudentRegister from "./PaasStudent/Register";
 // import StudentLogin from "./PaasStudent/StudentLogin";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
@@ -30,7 +31,7 @@ function App() {
       <Route path="/Teachers" element={<DisplayT />} />
       <Route path="/Adds" element={<Adds/>} />
       <Route path="/addteacher" element={<AddT />} />
-      <Route path="/Assingment" element={<Assingment/>} />
+      <Route path="/Assignment" element={<Assignment/>} />
       <Route path="/AddAssignment" element={<AddAssignment/>} />
       <Route path="/Fee" element={<Fee/>} />
       {/* <Route path="/StudentLogin" element={<StudentLogin/>} /> */}

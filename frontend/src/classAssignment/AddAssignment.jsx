@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Dashboard from "../Dashboard"
 
 function AddAssignment() {
     const [name, setname] = useState("")
@@ -17,7 +18,7 @@ function AddAssignment() {
     const handleCreate = async (e) => {
         e.preventDefault()
 
-        if (!img) {
+        if (!image) {
             toast.error("Please select an image ")
             return
         }
@@ -29,11 +30,7 @@ function AddAssignment() {
             formData.append("AssignmentTitle", AssignmentTitle)
             formData.append("Course", Course)
             formData.append("Class", Class)
-        
             formData.append("prImage", image)
-
-
-            // formData.append("prImage", img) // ⚠️ magaca "prImage" waa inuu la mid noqdaa backend-kaaga
 
             // Debug - eeg waxa la dirayo
             for (let pair of formData.entries()) {
@@ -52,8 +49,10 @@ function AddAssignment() {
         }
     }
 
-    return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    return <>
+    <div className="flex overflow-hidden h-screen mt-2 ml-64">
+        <Dashboard/>
+        <div className="flex justify-center items-start min-h-screen bg-white p-10">
             <div className="bg-white rounded-2xl shadow-lg p-8 w-[40rem] border-t-8 border-orange-600">
                 <h2 className="text-2xl font-bold text-center text-orange-600 mb-6">Register Assignment</h2>
                 
@@ -134,7 +133,8 @@ function AddAssignment() {
                 <ToastContainer position="top-right" autoClose={2000} />
             </div>
         </div>
-    )
+    </div>
+    </>
 }
 
 export default AddAssignment

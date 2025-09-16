@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Dashboard from "../Dashboard"
 
 function AddT() {
     const [Name,setName]=useState("")
@@ -28,8 +29,10 @@ function AddT() {
             navigate("/Teachers")
         }) 
     }
-  return (
-    <form className="flex items-center justify-center min-h-screen bg-gray-100">
+  return <>
+     <div className="flex ml-[500px]">
+<Dashboard/>
+    <form className="flex items-center justify-center min-h-screen bg-white">
       <div className="bg-orange-500 p-6 rounded-lg w-96">
         
         <input value={Name} onChange={(e)=>setName(e.target.value)} type="text" placeholder="enter name" className="w-80 mb-3 px-3 py-2 rounded" />
@@ -47,6 +50,9 @@ function AddT() {
 
       </div>
     </form>
-  )
+     </div>
+  
+  </>
+
 }
 export default AddT

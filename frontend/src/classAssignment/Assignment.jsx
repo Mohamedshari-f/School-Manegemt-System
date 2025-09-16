@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Dashboard from "../Dashboard";
 
 function Assignment() {
   const [data, setData] = useState([]);
@@ -24,7 +25,10 @@ function Assignment() {
     });
   };
 
-  return (
+  return <>
+  <div className="flex ml-64">
+<Dashboard/>
+  (
     <div className="p-8 bg-gray-50 min-h-screen">
       {/* Header Section */}
       <div className="flex items-center justify-between mb-8">
@@ -39,31 +43,31 @@ function Assignment() {
       {/* Table Section */}
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-          <thead className="bg-orange-500">
+          <thead className="bg-blue-600">
             <tr>
-              <th className="py-3 px-4 text-left text-black font-semibold">#</th>
-              <th className="py-3 px-4 text-left text-black font-semibold">
+              <th className="py-3 px-4 text-left text-white font-semibold">#</th>
+              <th className="py-3 px-4 text-left  text-white font-semibold">
                 Image
               </th>
-              <th className="py-3 px-4 text-left text-black font-semibold">
+              <th className="py-3 px-4 text-left  text-white font-semibold">
                 Name
               </th>
-              <th className="py-3 px-4 text-left text-black font-semibold">
+              <th className="py-3 px-4 text-left  text-white font-semibold">
                 Date
               </th>
-              <th className="py-3 px-4 text-left text-black font-semibold">
+              <th className="py-3 px-4 text-left  text-white font-semibold">
                 Assignment Title
               </th>
-              <th className="py-3 px-4 text-left text-black font-semibold">
+              <th className="py-3 px-4 text-left  text-white font-semibold">
                 Course
               </th>
-              <th className="py-3 px-4 text-left text-black font-semibold">
+              <th className="py-3 px-4 text-left  text-white font-semibold">
                 Class
               </th>
-              <th className="py-3 px-4 text-left text-black font-semibold">
+              <th className="py-3 px-4 text-left text-white font-semibold">
                 Status
               </th>
-              <th className="py-3 px-4 text-left text-black font-semibold">
+              <th className="py-3 px-4 text-left  text-white font-semibold">
                 Action
               </th>
             </tr>
@@ -118,6 +122,11 @@ function Assignment() {
       </div>
     </div>
   );
+  </div>
+
+  </>
+
 }
+
 
 export default Assignment;

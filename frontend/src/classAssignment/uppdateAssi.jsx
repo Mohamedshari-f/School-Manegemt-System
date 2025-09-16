@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Dashboard from "../Dashboard";
 
 export default function UpdateAssignment() {
   const { id } = useParams();
@@ -20,7 +21,6 @@ export default function UpdateAssignment() {
   const [existingImage, setExistingImage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Fetch single assignment
   useEffect(() => {
     if (!id) return;
     axios
@@ -39,13 +39,11 @@ export default function UpdateAssignment() {
       .catch(console.error);
   }, [id]);
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle update
   const handleUpdate = async (e) => {
     e.preventDefault();
     if (!id) return;
@@ -63,7 +61,7 @@ export default function UpdateAssignment() {
       });
 
       Swal.fire("Updated!", "Assignment updated successfully", "success");
-      navigate("/Assingment");
+      navigate("/Assignment");
     } catch (err) {
       console.error(err);
       toast.error("Failed to update assignment", { position: "top-right" });
@@ -73,61 +71,66 @@ export default function UpdateAssignment() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-      <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-xl border-t-8 border-orange-600">
-        <h2 className="text-3xl font-bold text-center text-orange-600 mb-6">
-          Update Assignment
-        </h2>
+    <div className="flex h-screen bg-gray-100">
+      {/* Sidebar */}
+      <div className="w-64 h-full overflow-none">
+        <Dashboard />
+      </div>
 
-        <form onSubmit={handleUpdate} className="space-y-4">
-          {/* Form fields */}
-          {[
-            { name: "name", label: "Name", type: "text" },
-            { name: "date", label: "Date", type: "date" },
-            { name: "AssigmentTitle", label: "Assigment Title", type: "text" },
-            { name: "Course", label: "Course", type: "text" },
-            { name: "Class", label: "Class", type: "text" },
-          ].map(({ name, label, type }) => (
-            <div key={name}>
-              <label className="block text-gray-700 font-medium mb-1">{label}</label>
+      {/* Main content */}
+      <div className="flex-1 h-full overflow-y-auto p-8 flex justify-center">
+        <div className="w-full max-w-4xl bg-white p-8 rounded-2xl shadow-lg border-t-8 border-orange-600">
+          <h2 className="text-3xl font-bold text-center text-orange-600 mb-6">
+            Update Assignment
+          </h2>
+
+          <form onSubmit={handleUpdate} className="w-full space-y-4">
+            {[
+              { name: "name", label: "Name", type: "text" },
+              { name: "date", label: "Date", type: "date" },
+              { name: "AssigmentTitle", label: "Assigment Title", type: "text" },
+              { name: "Course", label: "Course", type: "text" },
+              { name: "Class", label: "Class", type: "text" },
+            ].map(({ name, label, type }) => (
+              <div key={name}>
+                <label className="block text-gray-700 font-medium mb-1">{label}</label>
+                <input
+                  type={type}
+                  name={name}
+                  value={form[name]}
+                  onChange={handleChange}
+                  className="w-full border border-orange-600 rounded-lg p-2"
+                  required
+                />
+              </div>
+            ))}
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">Image</label>
               <input
-                type={type}
-                name={name}
-                value={form[name]}
-                onChange={handleChange}
-                className="w-full border border-orange-600 rounded-lg p-2"
-                required
+                type="file"
+                accept="image/*"
+                onChange={(e) => setImage(e.target.files[0])}
+                className="w-full text-gray-700"
               />
+              {existingImage && !image && (
+                <p className="text-sm text-gray-500 mt-1">Current Image: {existingImage}</p>
+              )}
             </div>
-          ))}
 
-          {/* Image upload */}
-          <div>
-            <label className="block text-gray-700 font-medium mb-1">Image</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setImage(e.target.files[0])}
-              className="w-full text-gray-700"
-            />
-            {existingImage && !image && (
-              <p className="text-sm text-gray-500 mt-1">Current Image: {existingImage}</p>
-            )}
-          </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 mt-5 ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {loading ? "Updating..." : "Update Assignment"}
+            </button>
+          </form>
 
-          {/* Submit button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className={`w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 mt-5 ${
-              loading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-          >
-            {loading ? "Updating..." : "Update Assignment"}
-          </button>
-        </form>
-
-        <ToastContainer autoClose={2000} />
+          <ToastContainer autoClose={2000} />
+        </div>
       </div>
     </div>
   );
