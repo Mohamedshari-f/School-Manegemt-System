@@ -17,14 +17,11 @@ import Adds from "./student/AddS";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
 import ExamAdmin from "./ExamAdmin/Exam Admin";
 import Assignment from "./classAssignment/Assignment";
-<<<<<<< HEAD
 import MainPage from "./Security/Login&register";
-=======
+
 import AddBook from "./Books/AddBook";
->>>>>>> d6f2a75caae958fff16a8bbf064cccf11304151e
-// import StudentRegister from "./PaasStudent/Register";
-// import StudentLogin from "./PaasStudent/StudentLogin";
-// import StudentLogin from "./ExamAdmin/StudentLogin";
+import RegisterStudent from "./Security/Register";
+
 
 function App() {
   return <>
@@ -45,12 +42,11 @@ function App() {
       <Route path="/Update/:id" element={<Update/>} />
       <Route path="/ExamAdmin" element={<ExamAdmin/>} />
       <Route path="/AddBook" element={<AddBook/>} />
-      {/* <Route path="/StudentLogin" element={<StudentLogin/>} /> */}
-      {/* <Route path="/StudentRegister" element={<StudentRegister/>} /> */}
-
+     
 <Route path="/update/Teacher/:id" element={<UpdateTeacher />} />
 <Route path="/Attendance" element={<DisplayAttendance />} />
 <Route path="/Courses" element={<DisplayBooks />} />
+<Route path="/login-student" element={<RegisterStudent />} />
 
     </Routes>
   </>

@@ -2,17 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-// Routers
+
 const StudentRouter = require("./Router/StudentRouter");
 const TeacherRouter = require("./Router/TeacherRouter");
 const AssignmentRouter = require("./Router/AssignmentRouter");
 const AttendanceRouter = require("./Router/attendanceRouter");
 const BookRouter = require("./Router/Book");
-// const StdRouter = require("./Router/StdRouter");     // Registration route
 const feeRouter = require("./Router/Fee");
 const ExamRouter = require("./Router/ExamRouter");
-// const authRoutes = require("./Router/auth");
-
+const StudentAuthoRoutr=require("./Router/StudentAuthoRouter")
 const app = express();
 
 // Middleware
@@ -27,7 +25,7 @@ app.use(AttendanceRouter);
 app.use(BookRouter);
 app.use(feeRouter);
 app.use(ExamRouter);
-
+app.use(StudentAuthoRoutr);
 
 // Static folders
 app.use("/allImages", express.static("images"));

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function MainPage() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r ">
@@ -9,9 +11,9 @@ function MainPage() {
           Login
         </button>
 
-        <button className="w-full bg-pink-600 text-white font-semibold py-3 rounded-lg hover:bg-pink-700 transition">
+      <Link to="/login-student"> <button className="w-full bg-pink-600 text-white font-semibold py-3 rounded-lg hover:bg-pink-700 transition">
           Register
-        </button>
+        </button></Link> 
       </div>
     </div>
   );
