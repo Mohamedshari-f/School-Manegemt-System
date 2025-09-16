@@ -31,7 +31,7 @@ app.use("/allImages", express.static("document"))
 // MongoDB connection
 mongoose.connect("mongodb://localhost:27017/School")
   .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .catch((err) => console.error(" MongoDB connection error:", err));
 
 
 // Middleware
