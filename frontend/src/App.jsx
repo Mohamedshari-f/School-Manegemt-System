@@ -17,6 +17,7 @@ import Adds from "./student/AddS";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
 import ExamAdmin from "./ExamAdmin/Exam Admin";
 import Assignment from "./classAssignment/Assignment";
+import AddBook from "./Books/AddBook";
 // import StudentRegister from "./PaasStudent/Register";
 // import StudentLogin from "./PaasStudent/StudentLogin";
 // import StudentLogin from "./ExamAdmin/StudentLogin";
@@ -37,6 +38,7 @@ function App() {
       {/* <Route path="/StudentLogin" element={<StudentLogin/>} /> */}
       <Route path="/Update/:id" element={<Update/>} />
       <Route path="/ExamAdmin" element={<ExamAdmin/>} />
+      <Route path="/AddBook" element={<AddBook/>} />
       {/* <Route path="/StudentLogin" element={<StudentLogin/>} /> */}
       {/* <Route path="/StudentRegister" element={<StudentRegister/>} /> */}
 
