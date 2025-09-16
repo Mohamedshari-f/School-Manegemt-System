@@ -1,97 +1,217 @@
 import axios from "axios";
-import { Link } from "react-router-dom"
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Dashboard from "../Dashboard";
 
-function AddFee() {
-  const [StudentName, setStudentName] = useState("");
-  const [StudentID, setStudentID] = useState("");
-  const [Class, setClass] = useState("");
-  const [Month, setMonth] = useState("");
-  const [Amount, setAmount] = useState("");
-  const [PaidDate, setPaidDate] = useState("");
+function Fee() {
+  const [fees, setFees] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [form, setForm] = useState({
+    studentId: "",
+    amount: "",
+    month: "",
+    paidDate: "",
+  });
 
-  const navigate = useNavigate();
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
 
-  const handlePost = (e) => {
-    e.preventDefault();
+  const fetchFees = () => {
     axios
-      .post("http://localhost:6200/create/fee", {
-        StudentName,
-        StudentID,
-        Class,
-        Month,
-        Amount,
-        PaidDate,
-      })
+      .get("http://localhost:6200/fee/read")
+      .then((res) => setFees(res.data))
+      .catch((err) => console.error(err));
+  };
+
+  const fetchStudents = () => {
+    axios
+      .get("http://localhost:6200/read/student")
+      .then((res) => setStudents(res.data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    fetchFees();
+    fetchStudents();
+  }, []);
+
+  const handleSubmit = () => {
+    axios
+      .post("http://localhost:6200/fee/create", form)
       .then(() => {
-        alert("Fee payment recorded successfully ✅");
-        navigate("/Fees"); 
-      });
+        fetchFees();
+        setForm({ studentId: "", amount: "", month: "", paidDate: "" });
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:6200/fee/delete/${id}`)
+      .then(() => fetchFees())
+      .catch((err) => console.error(err));
+  };
+
+  // Print Receipt
+  const handlePrint = (fee) => {
+    const receiptWindow = window.open("", "_blank", "width=400,height=600");
+    const receiptHTML = `
+      <html>
+        <head>
+          <title>Fee Receipt</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 20px; }
+            .receipt {
+              border: 2px solid #2563eb;
+              border-radius: 10px;
+              padding: 20px;
+              text-align: center;
+            }
+            h2 { color: #2563eb; margin-bottom: 10px; }
+            .info { text-align: left; margin-top: 15px; }
+            .info p { margin: 4px 0; font-size: 14px; }
+            .footer {
+              margin-top: 20px;
+              font-size: 12px;
+              color: #555;
+              border-top: 1px dashed #ccc;
+              padding-top: 10px;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="receipt">
+            <h2>School Fee Receipt</h2>
+            <div class="info">
+              <p><strong>Student:</strong> ${fee.student?.Name || ""}</p>
+              <p><strong>Class:</strong> ${fee.student?.Class || ""}</p>
+              <p><strong>Amount:</strong> $${fee.amount}</p>
+              <p><strong>Month:</strong> ${fee.month}</p>
+              <p><strong>Paid Date:</strong> ${fee.paidDate ? new Date(fee.paidDate).toLocaleDateString() : ""}</p>
+            </div>
+            <div class="footer">
+              <p>Thank you for your payment!</p>
+              <p>Powered by School Management System</p>
+            </div>
+          </div>
+          <script>
+            window.print();
+          </script>
+        </body>
+      </html>
+    `;
+    receiptWindow.document.write(receiptHTML);
+    receiptWindow.document.close();
   };
 
   return (
-    <form className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white shadow-lg p-6 rounded-xl w-96 border border-gray-200">
-        <h2 className="text-2xl font-bold text-center mb-4 text-gray-800">
-          Add Fee Payment
-        </h2>
-
-        <input
-          value={StudentName}
-          onChange={(e) => setStudentName(e.target.value)}
-          type="text"
-          placeholder="Enter Student Name"
-          className="w-80 mb-3 px-3 py-2 rounded border"
-        />
-
-        <input
-          value={StudentID}
-          onChange={(e) => setStudentID(e.target.value)}
-          type="text"
-          placeholder="Enter Student ID"
-          className="w-80 mb-3 px-3 py-2 rounded border"
-        />
-
-        <input
-          value={Class}
-          onChange={(e) => setClass(e.target.value)}
-          type="text"
-          placeholder="Enter Class"
-          className="w-80 mb-3 px-3 py-2 rounded border"
-        />
-
-        <input
-          value={Month}
-          onChange={(e) => setMonth(e.target.value)}
-          type="text"
-          placeholder="Enter Month (e.g. September)"
-          className="w-80 mb-3 px-3 py-2 rounded border"
-        />
-
-        <input
-          value={Amount}
-          onChange={(e) => setAmount(e.target.value)}
-          type="number"
-          placeholder="Enter Amount"
-          className="w-80 mb-3 px-3 py-2 rounded border"
-        />
-
-        <input
-          value={PaidDate}
-          onChange={(e) => setPaidDate(e.target.value)}
-          type="date"
-          className="w-80 mb-3 px-3 py-2 rounded border"
-        />
-
-       <Link to="/Cards"><button
-          onClick={handlePost}
-          className="w-80 bg-orange-500 text-white font-semibold py-2 rounded hover:bg-orange-600 transition"
-        >
-          Save Fee
-        </button></Link>
+    <div className="flex">
+      {/* Left side - Dashboard */}
+      <div className="w-1/4 bg-white min-h-screen">
+        <Dashboard />
       </div>
-    </form>
+
+      {/* Right side - Fee Management */}
+      <div className="w-3/4 p-6">
+        <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">
+          Fee Management
+        </h1>
+
+        {/* Form */}
+        <div className="flex flex-wrap gap-3 mb-6">
+          <select
+            value={form.studentId}
+            onChange={(e) => setForm({ ...form, studentId: e.target.value })}
+            className="border px-3 py-2 rounded"
+          >
+            <option value="">Select Student</option>
+            {students.map((s) => (
+              <option key={s._id} value={s._id}>
+                {s.Name} - {s.Class}
+              </option>
+            ))}
+          </select>
+
+          <input
+            type="number"
+            placeholder="Amount"
+            value={form.amount}
+            onChange={(e) => setForm({ ...form, amount: e.target.value })}
+            className="border px-3 py-2 rounded"
+          />
+
+          <select
+            value={form.month}
+            onChange={(e) => setForm({ ...form, month: e.target.value })}
+            className="border px-3 py-2 rounded"
+          >
+            <option value="">Select Month</option>
+            {months.map((m) => (
+              <option key={m} value={m}>
+                {m}
+              </option>
+            ))}
+          </select>
+
+          <input
+            type="date"
+            value={form.paidDate}
+            onChange={(e) => setForm({ ...form, paidDate: e.target.value })}
+            className="border px-3 py-2 rounded"
+          />
+
+          <button
+            onClick={handleSubmit}
+            className="bg-green-600 text-white px-4 py-2 rounded"
+          >
+            Save
+          </button>
+        </div>
+
+        {/* Table */}
+        <table className="min-w-full border shadow rounded-lg">
+          <thead className="bg-blue-600 text-white">
+            <tr>
+              <th className="px-4 py-2 text-left">Name</th>
+              <th className="px-4 py-2 text-left">Class</th>
+              <th className="px-4 py-2 text-left">Amount</th>
+              <th className="px-4 py-2 text-left">Month</th>
+              <th className="px-4 py-2 text-left">Paid Date</th>
+              <th className="px-4 py-2 text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fees.map((f) => (
+              <tr key={f._id} className="hover:bg-gray-50">
+                <td className="px-4 py-2">{f.student?.Name}</td>
+                <td className="px-4 py-2">{f.student?.Class}</td>
+                <td className="px-4 py-2">{f.amount}</td>
+                <td className="px-4 py-2">{f.month}</td>
+                <td className="px-4 py-2">
+                  {f.paidDate ? new Date(f.paidDate).toLocaleDateString() : ""}
+                </td>
+                <td className="px-4 py-2 text-center space-x-2">
+                  <button
+                    onClick={() => handleDelete(f._id)}
+                    className="bg-red-500 text-white px-3 py-1 rounded"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    onClick={() => handlePrint(f)}
+                    className="bg-blue-500 text-white px-3 py-1 rounded"
+                  >
+                    Print Receipt
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
-export default AddFee;
+
+export default Fee;
