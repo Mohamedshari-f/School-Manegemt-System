@@ -22,6 +22,7 @@ import MainPage from "./Security/Login&register";
 import AddBook from "./Books/AddBook";
 import RegisterStudent from "./Security/Register";
 import Login from "./Security/Login";
+import Reports from "./Reports/Report";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
 <Route path="/Courses" element={<DisplayBooks />} />
 <Route path="/Reg" element={<RegisterStudent />} />
 <Route path="/Login" element={<Login/>} />
+<Route path="/Reports" element={<Reports/>} />
 
     </Routes>
   </>

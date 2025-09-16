@@ -22,12 +22,12 @@ function Dashboard() {
           </button>
 
           <ul className="flex flex-col gap-3 list-none">
-            <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+            <Link to="/Reports"> <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
               <i className="fa-solid fa-house text-xl"></i>
               {!collapsed && (
                 <span className="font-semibold text-lg">Dashboard</span>
               )}
-            </li>
+            </li></Link>
 
             <Link to="/Student">
               <li className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
