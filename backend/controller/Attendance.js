@@ -1,62 +1,51 @@
-const AttendanceModel = require("../Models/attendance");
-const StudentModel = require("../Models/StudentModel");
+const Attendance = require("../models/attendance");
+const Student = require("../models/StudentModel");
 
-// Mark or Update Attendance
-const MarkAttendance = async (req, res) => {
+// GET attendance by date
+exports.getAttendanceByDate = async (req, res) => {
+  try {
+    const { date } = req.params;
+
+    // Fetch existing attendance
+    const attendanceList = await Attendance.find({ date }).populate("student");
+
+    if (attendanceList.length === 0) {
+      // Haddii uusan jirin, soo qaado dhammaan ardayda
+      const students = await Student.find();
+      const emptyAttendance = students.map((stu) => ({
+        student: stu,
+        status: null,
+        _id: stu._id,
+        createdAt: new Date(),
+      }));
+      return res.json(emptyAttendance);
+    }
+
+    res.json(attendanceList);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// POST mark attendance
+exports.markAttendance = async (req, res) => {
   try {
     const { studentId, status, date } = req.body;
 
-    const start = new Date(new Date(date).setHours(0,0,0,0));
-    const end = new Date(new Date(date).setHours(23,59,59,999));
+    let attendance = await Attendance.findOne({ student: studentId, date });
 
-    let record = await AttendanceModel.findOne({
-      student: studentId,
-      date: { $gte: start, $lte: end },
-    });
-
-    if(record){
-      record.status = status;
-      await record.save();
-      return res.send(record);
+    if (attendance) {
+      attendance.status = status;
+      await attendance.save();
+    } else {
+      attendance = new Attendance({ student: studentId, status, date });
+      await attendance.save();
     }
 
-    const newRecord = new AttendanceModel({ student: studentId, status, date });
-    await newRecord.save();
-    res.send(newRecord);
-
-  } catch(err){
-    res.status(400).send({ message: err.message });
+    res.json({ message: "Attendance marked successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
   }
-}
-
-// Read Attendance by Date (merge with all students)
-const ReadAttendanceByDate = async (req, res) => {
-  try {
-    const date = new Date(req.params.date);
-    const start = new Date(date.setHours(0,0,0,0));
-    const end = new Date(date.setHours(23,59,59,999));
-
-    const students = await StudentModel.find();
-
-    const attendance = await AttendanceModel.find({
-      date: { $gte: start, $lte: end },
-    }).populate("student");
-
-    const data = students.map(stu => {
-      const record = attendance.find(a => a.student._id.toString() === stu._id.toString());
-      return {
-        _id: record?._id || null,
-        student: stu,
-        status: record?.status || "Absent",
-        date,
-      };
-    });
-
-    res.send(data);
-
-  } catch(err){
-    res.status(500).send({ message: err.message });
-  }
-}
-
-module.exports = { MarkAttendance, ReadAttendanceByDate };
+};

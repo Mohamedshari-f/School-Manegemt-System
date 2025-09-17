@@ -3,7 +3,16 @@ const Exam = require("../Models/Exammodel");
 // Create Exam
 const createExam = async (req, res) => {
   try {
-    const exam = new Exam(req.body);
+    const { subject, date, totalMarks, examClass, studentId } = req.body;
+
+    const exam = new Exam({
+      subject,
+      date,
+      totalMarks,
+      examClass,          // ✅ ku dar
+      student: studentId, // ✅ connect to student
+    });
+
     await exam.save();
     res.status(201).json(exam);
   } catch (err) {

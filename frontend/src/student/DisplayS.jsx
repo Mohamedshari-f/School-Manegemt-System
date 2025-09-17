@@ -6,9 +6,11 @@ import Dashboard from "../Dashboard";
 
 function DisplayS() {
   const [data, setData] = useState([]);
+  const [filterClass, setFilterClass] = useState(""); // class filter
 
   const handlePost = () => {
-    axios.get("http://localhost:6200/read/student")
+    axios
+      .get("http://localhost:6200/read/student")
       .then((res) => setData(res.data))
       .catch((err) => console.error(err));
   };
@@ -26,6 +28,11 @@ function DisplayS() {
       })
       .catch((err) => console.error(err));
   };
+
+  // filter data (kaliya haddii class la doorto)
+  const filteredData = filterClass
+    ? data.filter((item) => item.Class === filterClass)
+    : [];
 
   return (
     <div className="flex min-h-screen bg-white">
@@ -45,6 +52,22 @@ function DisplayS() {
           </Link>
         </div>
 
+        {/* Filter by class */}
+        <div className="mb-4">
+          <select
+            value={filterClass}
+            onChange={(e) => setFilterClass(e.target.value)}
+            className="px-4 py-2 border rounded-lg shadow-sm"
+          >
+            <option value="">Select Class</option>
+            <option value="Class One">graphic degsign</option>
+            <option value="Class Two">computer Application </option>
+            <option value="Class Three">Video editing</option>
+            <option value="Class Four">motion graphs</option>
+            <option value="Class Five">web development</option>
+          </select>
+        </div>
+
         <div className="overflow-x-auto bg-white shadow rounded-lg">
           <table className="min-w-full border text-center">
             <thead className="bg-blue-600 text-white">
@@ -58,7 +81,7 @@ function DisplayS() {
               </tr>
             </thead>
             <tbody>
-              {data.map((item, idx) => (
+              {filteredData.map((item, idx) => (
                 <tr
                   key={item._id}
                   className={`hover:bg-gray-50 ${
@@ -81,7 +104,7 @@ function DisplayS() {
                   </td>
                 </tr>
               ))}
-              {data.length === 0 && (
+              {filterClass && filteredData.length === 0 && (
                 <tr>
                   <td
                     colSpan="6"

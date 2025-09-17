@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const AttendanceControl = require("../controller/Attendance");
+const AttendanceController = require("../controller/Attendance");
 
-router.post("/attendance/mark", AttendanceControl.MarkAttendance);
+router.get("/date/:date", AttendanceController.getAttendanceByDate);
+router.post("/mark", AttendanceController.markAttendance);
 
-router.get("/attendance/date/:date", AttendanceControl.ReadAttendanceByDate);
-
-module.exports = router
+module.exports = router;

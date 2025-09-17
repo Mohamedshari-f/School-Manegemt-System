@@ -8,4 +8,5 @@ const studentSchema = new mongoose.Schema({
   Class: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Student", studentSchema);
+// Haddii model horey u jiray, isticmaal; haddii kale abuuro
+module.exports = mongoose.models.Student || mongoose.model("Student", studentSchema);

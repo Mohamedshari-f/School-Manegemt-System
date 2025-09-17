@@ -5,13 +5,13 @@ const mongoose = require("mongoose");
 const StudentRouter = require("./Router/StudentRouter");
 const TeacherRouter = require("./Router/TeacherRouter");
 const AssignmentRouter = require("./Router/AssignmentRouter");
-const AttendanceRouter = require("./Router/attendanceRouter");
 const BookRouter = require("./Router/Book");
 const feeRouter = require("./Router/Fee");
 const ExamRouter = require("./Router/ExamRouter");
 const AdminRouter = require("./Router/AdminRouter");
 
 const StudentAuthoRouter = require("./Router/StudentAuthoRouter"); // ✅ typo saxay
+const attendanceRouter = require("./Router/attendanceRouter");
 
 const app = express();
 
@@ -23,11 +23,11 @@ app.use(express.json());
 app.use(StudentRouter);
 app.use(TeacherRouter);
 app.use(AssignmentRouter);
-app.use(AttendanceRouter);
 app.use(BookRouter);
 app.use(feeRouter);
 app.use(ExamRouter);
 app.use(AdminRouter);
+app.use(attendanceRouter);
 
 app.use(StudentAuthoRouter); // ✅ variable sax ah
 
