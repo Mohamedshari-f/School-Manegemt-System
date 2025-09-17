@@ -59,12 +59,12 @@ function DisplayS() {
             onChange={(e) => setFilterClass(e.target.value)}
             className="px-4 py-2 border rounded-lg shadow-sm"
           >
-            <option value="">Select Class</option>
-            <option value="Class One">graphic degsign</option>
-            <option value="Class Two">computer Application </option>
-            <option value="Class Three">Video editing</option>
-            <option value="Class Four">motion graphs</option>
-            <option value="Class Five">web development</option>
+             <option value="">Select Class</option>
+            <option value="Class One">Graphic Design</option>
+            <option value="Class Two">Computer Application</option>
+            <option value="Class Three">Video Editing</option>
+            <option value="Class Four">Motion Graphics</option>
+            <option value="Class Five">Web Development</option>
           </select>
         </div>
 

@@ -1,4 +1,4 @@
-const Attendance = require("../models/attendance");
+const Attendance = require("../Models/attendance");
 const Student = require("../models/StudentModel");
 
 // GET attendance by date

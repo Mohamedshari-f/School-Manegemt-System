@@ -79,12 +79,12 @@ function Adds() {
             className="w-80 mb-3 px-3 py-2 rounded text-black"
             required
           >
-            <option value="">Select Course</option>
-            <option value="Class One">web development</option>
-            <option value="Class Two">Graphic degsin</option>
-            <option value="Class Three">video editing</option>
-            <option value="Class Four">computer Application</option>
-            <option value="Class Five">graphic motion</option>
+            <option value="">Select Class</option>
+            <option value="Class One">Graphic Design</option>
+            <option value="Class Two">Computer Application</option>
+            <option value="Class Three">Video Editing</option>
+            <option value="Class Four">Motion Graphics</option>
+            <option value="Class Five">Web Development</option>
           </select>
 
           <button
