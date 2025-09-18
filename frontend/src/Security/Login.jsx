@@ -13,20 +13,15 @@ function Login() {
 
   function handleInsert(e) {
     e.preventDefault();
-
-    const url =
-      active === "students"
-        ? "http://localhost:6200/login/students"
-        : "http://localhost:6200/login/admin";
-
-    const payload = active === "students" ? { email, password } :  { email, password }
-
-    axios.post(url, payload)
+axios.post("http://localhost:6200/login/admin",{
+  email,
+  password
+})
       .then((res) => {
         toast.success(`${active} login successfully`);
 
         // Save to localStorage and navigate
-        setTimeout(()=>navigate(active==="customer"?"/":"/Reports"),1500)
+        setTimeout(()=>navigate("/dash"),1000)
          localStorage.setItem(active==="students"? "student":"admin",JSON.stringify(res))
       })
       .catch((err) => {
@@ -38,29 +33,17 @@ function Login() {
     <div className="min-h-screen grid place-items-center bg-gray-50">
       <div className="w-full max-w-md bg-white rounded-2xl shadow p-6">
         <div className="flex justify-center gap-8">
-          <button
-            onClick={() => setActive("students")}
-            className={`px-12 py-3 rounded-2xl ${
-              active === "students"
-                ? "bg-blue-500 text-white"
-                : "border-2 border-black text-black"
-            }`}
+         
+          <h1
+          
+            className="px-12 py-3 rounded-2xl 
+                 bg-blue-500 text-white"
+            
           >
-            students
-          </button>
-          <button
-            onClick={() => setActive("admin")}
-            className={`px-12 py-3 rounded-2xl ${
-              active === "admin"
-                ? "bg-blue-500 text-white"
-                : "border-2 border-black text-black"
-            }`}
-          >
-            Admin
-          </button>
+            Admin Login
+          </h1>
         </div>
 
-        <h2 className="text-2xl font-semibold tracking-tight mb-1">Login</h2>
 
         <form className="space-y-4" onSubmit={handleInsert}>
           <div>
@@ -98,9 +81,9 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-gray-900 px-4 py-2 text-white font-medium hover:bg-black"
+            className="w-full rounded-xl bg-blue-600 px-4 py-2 text-white font-medium"
           >
-            {active === "students" ? "Login students" : "Login Admin"}
+            Login Admin
           </button>
         </form>
       </div>

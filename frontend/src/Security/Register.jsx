@@ -9,24 +9,18 @@ function RegisterStudent() {
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
     const [password, setPassword] = useState("")
-    const [active, setActive] = useState("students")
+    // const [active, setActive] = useState("students")
 
     const navigate = useNavigate()
 
     const handleInsert = (e) => {
         e.preventDefault()
-
-        const url =
-          active === "students"
-            ? "http://localhost:6200/create/students"
-            : "http://localhost:6200/create/admin";
-
-        const payload = { name, email, phone, password }
-
-        axios.post(url, payload)
-            .then((res) => {
-                toast.success(`${active} registered successfully`);
-                setTimeout(() => navigate("/Login"), 1500)
+        axios.post("http://localhost:6200/create/admin", { name,
+    email,
+    phone,
+    password}).then((res) => {
+                toast.success(" registered successfully");
+                setTimeout(() => navigate("/Login"), 1000)
             })
             .catch(() => {
                 toast.error("Registration failed, try again")
@@ -38,13 +32,8 @@ function RegisterStudent() {
             <div className="w-full max-w-md bg-white rounded-2xl shadow p-6">
                 <h2 className="text-2xl font-semibold mb-4 text-center"></h2>
                 <form className="space-y-4">
-                    <div className="flex justify-center gap-8">
-                        <button type="button" onClick={()=>setActive("students")} className={`px-8 py-3 rounded-lg ${active==="students" ? "bg-green-500 text-white":"border-2 border-black text-black"}`}>Student</button>
-                        <button type="button" onClick={()=>setActive("admin")} className={`px-8 py-3 rounded-lg ${active==="admin" ? "bg-green-500 text-white":"border-2 border-black text-black"}`}>Admin</button>
-                    </div>
-
                     <div>
-                        <label className="block text-sm font-medium mb-1" htmlFor="name">{active ==="students" ? "Student Name":"Admin Name"}</label>
+                        <label className="block text-sm font-medium mb-1" htmlFor="name">Admin Name</label>
                         <input value={name} onChange={(e) => setName(e.target.value)}
                             id="name"
                             className="w-full rounded-xl border border-gray-300 px-3 py-2 outline-none focus:ring-2 focus:ring-gray-800"
@@ -80,13 +69,13 @@ function RegisterStudent() {
 
                     <button onClick={handleInsert}
                         type="submit"
-                        className="w-full rounded-xl bg-gray-900 px-4 py-2 text-white font-medium hover:bg-black"
+                        className="w-full rounded-xl bg-blue-600 px-4 py-2 text-white font-medium"
                     >
-                       {active==="students"?"Register Student":"Register Admin"}
+                      Register Admin
                     </button>
                 </form>
             </div>
-            <ToastContainer position="top-right" autoClose={3000} />
+            <ToastContainer position="top-right" autoClose={1000} />
         </div>
     )
 }

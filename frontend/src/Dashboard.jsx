@@ -3,6 +3,9 @@ import { useState } from "react";
 
 function Dashboard() {
   const [collapsed, setCollapsed] = useState(false);
+     const handleLogout = ()=>{
+    localStorage.removeItem("admin")
+  }
 
   return (
     <>
@@ -88,6 +91,14 @@ function Dashboard() {
                 <i className="fa-solid fa-gear text-xl"></i>
                 {!collapsed && (
                   <span className="font-semibold text-lg">Exam</span>
+                )}
+              </li>
+            </Link>
+            <Link to="/Login">
+              <li onClick={handleLogout}  className="flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/20 hover:scale-105 transition transform duration-200">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                {!collapsed && (
+                  <span className="font-semibold text-lg">Logout</span>
                 )}
               </li>
             </Link>
