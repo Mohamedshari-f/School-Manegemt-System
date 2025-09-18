@@ -110,7 +110,7 @@ function DisplayS() {
                     colSpan="6"
                     className="py-6 text-gray-500 font-medium text-center"
                   >
-                    No students found ❌
+                    No students found 
                   </td>
                 </tr>
               )}

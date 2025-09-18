@@ -122,7 +122,7 @@ function ExamAdmin() {
             <option value="">Select Student</option>
             {students.map((s) => (
               <option key={s._id} value={s._id}>
-                {s.Name} - {s.Class}
+                {s.Name} ----- {s.Class}
               </option>
             ))}
           </select>

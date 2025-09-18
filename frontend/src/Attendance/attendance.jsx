@@ -63,11 +63,13 @@ function Attendance() {
             className="px-4 py-2 border rounded-lg"
           >
             <option value="">Select Class</option>
-            <option value="Class One">Graphic Design</option>
-            <option value="Class Two">Computer Application</option>
-            <option value="Class Three">Video Editing</option>
-            <option value="Class Four">Motion Graphics</option>
-            <option value="Class Five">Web Development</option>
+           
+            <option value="">Select Exam Class</option>
+            <option value="Computer Application">Class one</option>
+            <option value="Graphic Design">Class Two</option>
+            <option value="Video Editing">class three</option>
+            <option value="Graphic Motion">class four</option>
+            <option value="Options">Options</option>
           </select>
 
           <input
